@@ -3,7 +3,7 @@ body {
 }
 
 .up_part {
-  background-color:yellow;
+  background-color: rgb(234, 248, 106);
   width: 100%;
   padding: 15px 0px 15px 0px;
   display: flex;
@@ -13,7 +13,7 @@ body {
 .add_button {
   margin: 0px 20px 0px 15px;
   font-size: 25px;
-  background-color: rgb(204, 0, 204);
+  background-color: rgb(235, 113, 235);;
   border-radius: 8px;
   color: white;
   border: none;
@@ -23,7 +23,7 @@ body {
 
 .rm_button {
   font-size: 25px;
-  background-color: rgb(204, 0, 204);
+  background-color: rgb(235, 113, 235);;
   border: none;
   outline: none;
   color: white;
