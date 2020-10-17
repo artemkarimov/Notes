@@ -1,0 +1,66 @@
+body {
+  margin: 0px;
+}
+
+.up_part {
+  background-color:yellow;
+  width: 100%;
+  padding: 15px 0px 15px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.add_button {
+  margin: 0px 20px 0px 15px;
+  font-size: 25px;
+  background-color: rgb(204, 0, 204);
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  width: 6.5vw;
+}
+
+.rm_button {
+  font-size: 25px;
+  background-color: rgb(204, 0, 204);
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  width: 6.5vw;
+}
+
+.main_part {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.listOfNotes {
+  padding-left: 0px;
+  margin: 0px;
+  background-color: rgb(188, 210, 223);
+  height: 93.8vh;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.listOfNotes li {
+  font-size: 23px;
+  height: 60px;
+  border-bottom: 1px solid #000;
+}
+
+.text {
+  background-color:rgb(218, 224, 226);
+  font-size: 20px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  border: none; 
+  outline: none;
+}
