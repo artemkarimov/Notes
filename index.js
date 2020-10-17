@@ -63,6 +63,32 @@ const changeHash = note => {
   localStorage.setItem('hashList', JSON.stringify(hashList));
 };
 
+const saveText = () => {
+  if (previousText !== currentText) {
+    const notes = JSON.parse(localStorage.notes);
+    for (const value of notes) {
+      if (value.id == previous.id) {
+        const index = notes.indexOf(value);
+        notes.splice(index, 1);
+        value.text = currentText;
+        value.name = nameOfNote(value, currentText);
+        notes.push(value);
+        localStorage.removeItem('notes');
+        localStorage.setItem('notes', JSON.stringify(notes));
+        allNotes.forEach(note => {
+          if (note.id == value.id) {
+            const text = currentText;
+            note.changeText(text);
+            note.name = nameOfNote(note, text);
+            changeHash(note);
+          }
+        });
+        listOfNotes.insertBefore(previous, listOfNotes.firstChild);
+      }
+    }
+  }
+};
+
 const addClick = LI => {
   LI.addEventListener('click', () => {
     allNotes.forEach(note => {
@@ -71,29 +97,7 @@ const addClick = LI => {
     });
     location.hash = hashList[LI.id];
     LI.style.backgroundColor = 'red';
-    if (previousText !== currentText) {
-      const notes = JSON.parse(localStorage.notes);
-      for (const value of notes) {
-        if (value.id == previous.id) {
-          const index = notes.indexOf(value);
-          notes.splice(index, 1);
-          value.text = currentText;
-          value.name = nameOfNote(value, currentText);
-          notes.push(value);
-          localStorage.removeItem('notes');
-          localStorage.setItem('notes', JSON.stringify(notes));
-          allNotes.forEach(note => {
-            if (note.id == value.id) {
-              const text = currentText;
-              note.changeText(text);
-              note.name = nameOfNote(note, text);
-              changeHash(note);
-            }
-          });
-          listOfNotes.insertBefore(previous, listOfNotes.firstChild);
-        }
-      }
-    }
+    saveText();
     const notes = JSON.parse(localStorage.notes);
     for (const value of notes) {
       if (value.id == LI.id) {
@@ -109,6 +113,8 @@ const addClick = LI => {
 };
 
 add_button.addEventListener('click', () => {
+  saveText();
+  currentText = '';
   document.getElementById('text').value = '';
   const note = new Note();
   allNotes.push(note);
